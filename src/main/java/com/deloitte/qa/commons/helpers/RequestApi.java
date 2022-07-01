@@ -26,18 +26,55 @@ public class RequestApi {
         return createResponseMap(getResponse);
     }
 
-    public Map<String, String> sendCreateRequest(String endpoint, Map<String, Object> requestMap, List<Map<String, String>> requestHeaders) {
-        RequestSpecification createRequest = RestAssured.given();
-        Response createResponse;
+    public Map<String, String> sendPostRequest(String endpoint, Map<String, Object> requestMap, List<Map<String, String>> requestHeaders) {
+        RequestSpecification postRequest = RestAssured.given();
+        Response postResponse;
 
         for (Map<String, String> requestHeader: requestHeaders) {
-            createRequest.header(requestHeader.get("header"), requestHeader.get("value"));
+            postRequest.header(requestHeader.get("header"), requestHeader.get("value"));
         }
 
-        createRequest.body(requestMap);
-        createResponse = createRequest.post(endpoint);
+        postRequest.body(requestMap);
+        postResponse = postRequest.post(endpoint);
 
-        return createResponseMap(createResponse);
+        return createResponseMap(postResponse);
+    }
+
+    public Map<String, String> sendPutRequest(String endpoint, Map<String, Object> requestMap, List<Map<String, String>> requestHeaders) {
+        RequestSpecification putRequest = RestAssured.given();
+        Response putResponse;
+
+        for (Map<String, String> requestHeader: requestHeaders) {
+            putRequest.header(requestHeader.get("header"), requestHeader.get("value"));
+        }
+
+        putRequest.body(requestMap);
+        putResponse = putRequest.put(endpoint);
+
+        return createResponseMap(putResponse);
+    }
+
+    public Map<String, String> sendPatchRequest(String endpoint, Map<String, Object> requestMap, List<Map<String, String>> requestHeaders) {
+        RequestSpecification putRequest = RestAssured.given();
+        Response putResponse;
+
+        for (Map<String, String> requestHeader: requestHeaders) {
+            putRequest.header(requestHeader.get("header"), requestHeader.get("value"));
+        }
+
+        putRequest.body(requestMap);
+        putResponse = putRequest.patch(endpoint);
+
+        return createResponseMap(putResponse);
+    }
+
+    public Map<String, String> sendDeleteRequest(String endpoint, String path) {
+        RequestSpecification getRequest = RestAssured.given();
+        Response getResponse;
+
+        getResponse = getRequest.delete(endpoint + "/" + path);
+
+        return createResponseMap(getResponse);
     }
 
     private Map<String, String> createResponseMap(Response response) {

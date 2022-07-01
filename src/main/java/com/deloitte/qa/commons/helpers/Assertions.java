@@ -15,10 +15,10 @@ public class Assertions {
         switch (status) {
             case "SUCCESSFUL" -> assertEquals("200", code);
             case "CREATED" -> assertEquals("201", code);
-            case "NOT FOUND" -> assertEquals("404", code);
-            case "BAD REQUEST" -> assertEquals("400", code);
+            case "NOT_FOUND" -> assertEquals("404", code);
+            case "BAD_REQUEST" -> assertEquals("400", code);
             case "UNAUTHORIZED" -> assertEquals("401", code);
-            case "SERVICE UNAVAILABLE" -> assertEquals("500", code);
+            case "SERVICE_UNAVAILABLE" -> assertEquals("500", code);
         }
     }
 }
