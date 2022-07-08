@@ -26,6 +26,23 @@ public class RequestApi {
         return createResponseMap(getResponse);
     }
 
+    public Map<String, String> sendGetAuthorizationRequest(String authEndpoint, String path) {
+        return sendGetRequest(authEndpoint, path);
+    }
+
+    public Map<String, String> sendGetAuthorizationRequest(String authEndpoint, List<Map<String, String>> requestHeaders) {
+        RequestSpecification getRequest = RestAssured.given();
+        Response getResponse;
+
+        for (Map<String, String> requestHeader: requestHeaders) {
+            getRequest.header(requestHeader.get("header"), requestHeader.get("value"));
+        }
+
+        getResponse = getRequest.get(authEndpoint);
+
+        return createResponseMap(getResponse);
+    }
+
     public Map<String, String> sendPostRequest(String endpoint, Map<String, Object> requestMap, List<Map<String, String>> requestHeaders) {
         RequestSpecification postRequest = RestAssured.given();
         Response postResponse;
@@ -69,12 +86,27 @@ public class RequestApi {
     }
 
     public Map<String, String> sendDeleteRequest(String endpoint, String path) {
-        RequestSpecification getRequest = RestAssured.given();
-        Response getResponse;
+        RequestSpecification deleteRequest = RestAssured.given();
+        Response deleteResponse;
 
-        getResponse = getRequest.delete(endpoint + "/" + path);
+        deleteResponse = deleteRequest.delete(endpoint + "/" + path);
 
-        return createResponseMap(getResponse);
+        return createResponseMap(deleteResponse);
+    }
+
+    public Map<String, String> sendDeleteRequest(String endpoint, String path, List<Map<String, String>> requestHeaders) {
+        RequestSpecification deleteRequest = RestAssured.given();
+        Response deleteResponse;
+
+        if (!requestHeaders.isEmpty()) {
+            for (Map<String, String> requestHeader: requestHeaders) {
+                deleteRequest.header(requestHeader.get("header"), requestHeader.get("value"));
+            }
+        }
+
+        deleteResponse = deleteRequest.delete(endpoint + "/" + path);
+
+        return createResponseMap(deleteResponse);
     }
 
     private Map<String, String> createResponseMap(Response response) {

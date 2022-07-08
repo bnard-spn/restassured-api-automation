@@ -11,6 +11,10 @@ public class Assertions {
         assertEquals(expected, actual);
     }
 
+    public static void assertIfNotNull(Object obj) {
+        assertNotNull(obj);
+    }
+
     public static void validateStatusCode(String status, String code) {
         switch (status) {
             case "SUCCESSFUL" -> assertEquals("200", code);
@@ -18,6 +22,7 @@ public class Assertions {
             case "NOT_FOUND" -> assertEquals("404", code);
             case "BAD_REQUEST" -> assertEquals("400", code);
             case "UNAUTHORIZED" -> assertEquals("401", code);
+            case "ACCESS_FORBIDDEN" -> assertEquals("403", code);
             case "SERVICE_UNAVAILABLE" -> assertEquals("500", code);
         }
     }
