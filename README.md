@@ -169,7 +169,7 @@ public void testForSendGetRequest(){
 
 > **Note:**
 >
-> Please see the [guide]() below for reading the returned `responseMap` of the helper method.
+> Please see the [guide](#request-guide) below for reading the returned `responseMap` of the helper method.
 
 ---------------------------
 
@@ -207,7 +207,7 @@ These methods will iterate the list of `requestHeaders` and put it as a header i
 
 > **Note:**
 >
-> Please see the [guide]() below for creating the `requestMap` and `requestHeaders` objects.
+> Please see the [guide](#request-guide) below for creating the `requestMap` and `requestHeaders` objects.
 
 Usage:
 ```java
@@ -233,7 +233,7 @@ public void testForSendPostRequest() {
 ```
 > **Note:**
 >
-> Please see the [guide]() below for reading the returned `responseMap` of the helper method.
+> Please see the [guide](#request-guide) below for reading the returned `responseMap` of the helper method.
 
 ---------------------------
 
@@ -274,7 +274,7 @@ public void testForSendDeleteRequest(){
 ```
 > **Note:**
 >
-> Please see the [guide]() below for reading the returned `responseMap` of the helper method.
+> Please see the [guide](#request-guide) below for reading the returned `responseMap` of the helper method.
 
 2. `sendDeleteRequest(String endpoint, String path, List<Map<String, String>> requestHeaders)`
 
@@ -305,7 +305,7 @@ This method will iterate the list of items in the `requestHeader` object and put
 
 > **Note:**
 >
-> Please see the [guide]() below for creating the `requestHeaders` object.
+> Please see the [guide](#request-guide) below for creating the `requestHeaders` object.
 
 Usage:
 ```java
@@ -328,7 +328,7 @@ public void testForSendDeleteRequest(){
 ```
 > **Note:**
 >
-> Please see the [guide]() below for reading the returned `responseMap` of the helper method.
+> Please see the [guide](#request-guide) below for reading the returned `responseMap` of the helper method.
 
 ---------------------------
 
