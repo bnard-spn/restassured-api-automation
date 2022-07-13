@@ -255,7 +255,7 @@ public Map<String, String> sendDeleteRequest(String endpoint, String path) {
 }
 ```
 This method accepts two parameters:
-- `endpoint` - `String` datatype. To be used for sending the GET request.
+- `endpoint` - `String` datatype. To be used for sending the DELETE request.
 - `path` - `String` datatype. This will hold the additional parameters that may be needed in the DELETE request like an ID to be used for deleting the data.
 
 Same as the other API helper methods, it returns a `Map<String, String>` object.
@@ -297,7 +297,7 @@ public Map<String, String> sendDeleteRequest(String endpoint, String path, List<
 ```
 
 This method accepts three parameters:
-- `endpoint` - `String` datatype. To be used for sending the GET request.
+- `endpoint` - `String` datatype. To be used for sending the DELETE request.
 - `path` - `String` datatype. This will hold the additional parameters that may be needed in the DELETE request like an ID to be used for deleting the data.
 - `requestHeaders` - `List<Map<String, String>>` datatype. This will hold headers that may be needed for the DELETE request like the Authorization header to access the DELETE method.
 
@@ -636,6 +636,8 @@ private class TestAutomation {
 }
 ```
 
+---------------------------
+
 #### AuthResponse
 
 The `AuthResponse` type currently includes two `String` properties and one `int` property: `status`, `token` and `expiry` respectively. Other properties that may be returned by your API's authorization response can be added here in future framework updates.
@@ -664,7 +666,7 @@ private class TestAutomation {
     AuthResponse authResponse;
 
     @Test
-    public void testError() {
+    public void testAuth() {
         authResponse = new ObjectMapper().readValue(responseMap.get("response"), AuthResponse.class);
 
         assertIfEquals("SUCCESS", authResponse.getStatus());
